@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  dsh:
+    image: dsh:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DSH_HOME: /dsh-data
+      DSH_WORKSPACE: /workspace
+      HOST: 0.0.0.0
+      PORT: 3080
+    network_mode: bridge
+    ports:
+      - "3080:3080/tcp"
+    volumes:
+      - ./dsh_data:/dsh-data
+      - ./dsh_workspace:/workspace
