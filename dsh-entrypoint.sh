@@ -3,7 +3,7 @@ set -euo pipefail
 
 export DSH_HOME="${DSH_HOME:-/dsh-data}"
 export DSH_WORKSPACE="${DSH_WORKSPACE:-/workspace}"
-export HOST="${HOST:-0.0.0.0}"
+export HOST="${HOST:-127.0.0.1}"
 export PORT="${PORT:-3080}"
 
 if [ ! -d "$DSH_HOME" ]; then
@@ -26,5 +26,4 @@ echo "[dsh-entrypoint] INFO: 监听地址       = $HOST:$PORT"
 echo "[dsh-entrypoint] INFO: 启动 DeepSeek Harness Web UI ..."
 
 # --no-open  : 容器内不尝试打开浏览器
-# --host     : 绑定到所有网卡，允许外部访问
 exec dsh web --no-open --host "$HOST" --port "$PORT" "$@"

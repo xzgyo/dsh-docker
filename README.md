@@ -49,16 +49,12 @@ Compose 默认设置如下：
 | --- | --- | --- |
 | `DSH_HOME` | `/dsh-data` | 容器内的数据目录 |
 | `DSH_WORKSPACE` | `/workspace` | 容器内的工作区目录 |
-| `HOST` | `0.0.0.0` | Web UI 在容器内的监听地址 |
+| `HOST` | `127.0.0.1` | Web UI 仅监听本机回环地址 |
 | `PORT` | `3080` | Web UI 在容器内的监听端口 |
 
-宿主机端口映射在 `docker-compose.yaml` 的 `ports` 中配置。需要更换端口时，同时调整映射两侧的端口，并按需更新 `PORT`。
+Compose 使用 host 网络，因此无需配置端口映射。需要更换端口时，修改 `PORT`，并访问对应的 `http://localhost:<端口>`。
 
 Dockerfile 使用构建参数 `DSH_VERSION` 选择 DSH npm 包版本，默认值为 `latest`。
-
-## 提醒
-
-服务绑定到容器的所有网卡，并发布到宿主机端口 `3080`。请勿将该端口直接暴露到不可信网络；如需远程访问，请通过可信网络或受控的反向代理进行限制。
 
 ## Stars
 

@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   dsh:
     image: dsh:latest
@@ -9,11 +7,9 @@ services:
     environment:
       DSH_HOME: /dsh-data
       DSH_WORKSPACE: /workspace
-      HOST: 0.0.0.0
+      HOST: 127.0.0.1
       PORT: 3080
-    network_mode: bridge
-    ports:
-      - "3080:3080/tcp"
+    network_mode: host
     volumes:
       - ./dsh_data:/dsh-data
       - ./dsh_workspace:/workspace
