@@ -1,15 +1,18 @@
 services:
   dsh:
     image: dsh:latest
+    container_name: dsh
     build:
       context: .
       dockerfile: Dockerfile
     environment:
+      LANG: C.UTF-8
       DSH_HOME: /dsh-data
       DSH_WORKSPACE: /workspace
       HOST: 127.0.0.1
       PORT: 3080
     network_mode: host
+    restart: unless-stopped
     volumes:
       - ./dsh_data:/dsh-data
       - ./dsh_workspace:/workspace
