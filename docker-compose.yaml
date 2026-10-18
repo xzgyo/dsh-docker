@@ -16,3 +16,4 @@ services:
     volumes:
       - ./dsh_data:/dsh-data
       - ./dsh_workspace:/workspace
+      - ./node_home:/home/node
